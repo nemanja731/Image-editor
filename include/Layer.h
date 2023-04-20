@@ -12,8 +12,8 @@ public:
 	int opacity;
 	int width, height;
 	Pixel **(*layerMatrix);
-	Layer* next;
-	Layer* prev;
+	Layer *next;
+	Layer *prev;
 };
 
 #endif

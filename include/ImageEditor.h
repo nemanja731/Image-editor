@@ -3,9 +3,8 @@
 
 #include "Pixel.h"
 #include "Layer.h"
-#include<string>
+#include <string>
 using namespace std;
-
 
 class ImageEditor
 {
@@ -13,8 +12,8 @@ public:
 	ImageEditor();
 	~ImageEditor();
 
-	bool loadImage(unsigned char* image);
-	unsigned char* saveImage();
+	bool loadImage(unsigned char *image);
+	unsigned char *saveImage();
 
 	void addLayer();
 	void deleteLayer();
@@ -39,15 +38,15 @@ private:
 	Pixel **matrix;
 	string name;
 	int height, width;
-	Layer* layerList;
-	Layer* activeLayer;
+	Layer *layerList;
+	Layer *activeLayer;
 	int cntLayers;
 	Pixel editor;
 
-	int readName(unsigned char * image);
-	int readSize(unsigned char * image, int curr);
+	int readName(unsigned char *image);
+	int readSize(unsigned char *image, int curr);
 	bool allocateMatrix();
-	bool readPixels(unsigned char * image, int curr);
+	bool readPixels(unsigned char *image, int curr);
 	int calculateImageSize();
 	void addFirstLayer();
 };

@@ -15,11 +15,13 @@ void test();
 // Testovi 2, 3, 4 i 5 vrse manipulaciju nad slikom FourSquares.bmp
 // Testovi 6, 7 i 8 vrse manipulaciju nad slikom OrangeFlower.bmp
 // Date slike moraju da se nalaze na istom mestu gde i test.obj fajl
-unsigned char* editImage(unsigned char* input) {
+unsigned char *editImage(unsigned char *input)
+{
 
-	ImageEditor* imageEditor = new ImageEditor;
-	unsigned char* output = nullptr;
-	switch (testNumber) {
+	ImageEditor *imageEditor = new ImageEditor;
+	unsigned char *output = nullptr;
+	switch (testNumber)
+	{
 	case 0:
 		// MyExample
 		/*
@@ -27,12 +29,12 @@ unsigned char* editImage(unsigned char* input) {
 			Vrsi editovanje slike MyExample.bmp i stvara izlazni fajl MyExample_RESULT.bmp
 		*/
 		imageEditor->loadImage(input);
-		imageEditor->addLayer(); //1
+		imageEditor->addLayer(); // 1
 		imageEditor->setActiveColor("#000000");
 		imageEditor->fillRect(150, 150, 100, 100);
 		imageEditor->blur(15);
 		imageEditor->flipHorizontal();
-		imageEditor->addLayer(); //2
+		imageEditor->addLayer(); // 2
 		imageEditor->blur(15);
 		imageEditor->setLayerOpacity(50);
 		imageEditor->setActiveColor("#ABAB56");
@@ -46,7 +48,7 @@ unsigned char* editImage(unsigned char* input) {
 		imageEditor->selectLayer(1);
 		imageEditor->deleteLayer();
 		imageEditor->selectLayer(0);
-		imageEditor->addLayer(); //2
+		imageEditor->addLayer(); // 2
 		imageEditor->setActiveColor("#000000");
 		imageEditor->setLayerOpacity(75);
 		imageEditor->fillRect(150, 150, 150, 150);
@@ -58,24 +60,24 @@ unsigned char* editImage(unsigned char* input) {
 		imageEditor->flipHorizontal();
 		output = imageEditor->saveImage();
 		break;
-	case 1:																//check
-		// LOAD/SAVE												
+	case 1: // check
+		// LOAD/SAVE
 		imageEditor->loadImage(input);
 		output = imageEditor->saveImage();
 		break;
-	case 2:																//check
-		// FLIP HORIZONTAL											
+	case 2: // check
+		// FLIP HORIZONTAL
 		imageEditor->loadImage(input);
 		imageEditor->flipHorizontal();
 		output = imageEditor->saveImage();
 		break;
-	case 3:																//check
+	case 3: // check
 		// FLIP VERTICAL
 		imageEditor->loadImage(input);
 		imageEditor->flipVertical();
 		output = imageEditor->saveImage();
 		break;
-	case 4:																//check
+	case 4: // check
 		// GRAYSCALE
 		imageEditor->loadImage(input);
 		imageEditor->toGrayScale();
@@ -87,25 +89,25 @@ unsigned char* editImage(unsigned char* input) {
 		imageEditor->invertColors();
 		output = imageEditor->saveImage();
 		break;
-	case 6:																//check
+	case 6: // check
 		// BLUR WITH SIZE 1
 		imageEditor->loadImage(input);
 		imageEditor->blur(1);
 		output = imageEditor->saveImage();
 		break;
-	case 7:																//check
+	case 7: // check
 		// BLUR WITH SIZE 16
 		imageEditor->loadImage(input);
 		imageEditor->blur(16);
 		output = imageEditor->saveImage();
 		break;
-	case 8:																//check
+	case 8: // check
 		// CROP CENTER OF IMAGE
 		imageEditor->loadImage(input);
 		imageEditor->crop(32, 32, 64, 64);
 		output = imageEditor->saveImage();
 		break;
-	case 9:																//check
+	case 9: // check
 		// NEW LAYER: FILL BLACK RECTANGLE IN THE CENTER OF IMAGE
 		imageEditor->loadImage(input);
 		imageEditor->addLayer();
@@ -120,7 +122,7 @@ unsigned char* editImage(unsigned char* input) {
 		imageEditor->eraseRect(48, 48, 32, 32);
 		output = imageEditor->saveImage();
 		break;
-	case 11:															//check
+	case 11: // check
 		// NEW LAYER: FILL BLACK RECTANGLE IN THE CENTER OF IMAGE AND SET OPACITY OF LAYER TO 50%
 		imageEditor->loadImage(input);
 		imageEditor->addLayer();
@@ -128,7 +130,7 @@ unsigned char* editImage(unsigned char* input) {
 		imageEditor->setLayerOpacity(50);
 		output = imageEditor->saveImage();
 		break;
-	case 12:															//check
+	case 12: // check
 		// NEW LAYER: FILL YELLOW RECTANGLE IN THE CENTER OF IMAGE
 		imageEditor->loadImage(input);
 		imageEditor->addLayer();
@@ -141,11 +143,13 @@ unsigned char* editImage(unsigned char* input) {
 	return output;
 }
 
-int main() {
+int main()
+{
 
 	// Ova for petlja ce da pokrene sve testove [0 - 12]. Modifikujte uslov za 'if' da biste pokretali samo odredjene testove (npr: if(testNumber == 1 || testNumber == 5)).
-	for(testNumber = 0; testNumber <= numberOfTests; testNumber++)
-		if(testNumber == 0) test();
+	for (testNumber = 0; testNumber <= numberOfTests; testNumber++)
+		if (testNumber == 0)
+			test();
 
 	return 0;
 }
