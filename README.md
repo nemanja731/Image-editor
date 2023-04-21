@@ -31,4 +31,4 @@ of the color intensity of the pixel being changed and of all pixels around the p
 - `fillRect(int x, int y, int w, int h)` -> draws a rectangle of the active color of width w and height h whose upper left corner is in x and y coordinates
 - `eraseRect(int x, int y, int w, int h)` -> removes pixels that are inside a rectangle of width w and height h whose upper left corner is in coordinates x and y
 
-Before each manipulation, it is necessary to load the image with the command `loadImage(unsigned char *image)`, and after finishing the manipulation, it is necessary to save the image with the command `saveImage()`
+Before each manipulation, it is necessary to load the image with the method `loadImage(unsigned char *image)`, and after finishing the manipulation, it is necessary to save the image with the method `saveImage()`
