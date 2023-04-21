@@ -28,9 +28,7 @@ public:
 	void crop(int x, int y, int w, int h);
 	void setActiveColor(string hex);
 	void fillRect(int x, int y, int w, int h);
-	void eraseRect(int x, int y, int w, int h`);
-	void update();
-	void updateFirstLayer();
+	void eraseRect(int x, int y, int w, int h);
 
 	int readName(unsigned char *image);
 	int readSize(unsigned char *image, int curr);
@@ -39,6 +37,8 @@ public:
 	bool allocate();
 	int findSize();
 	void makeFirstLayer();
+	void update();
+	void updateFirstLayer();
 
 private:
 	int height, width, layersNumber;
