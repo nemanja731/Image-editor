@@ -4,9 +4,10 @@
 class Pixel
 {
 public:
-	unsigned char b, g, r;
-	Pixel(unsigned char b, unsigned char g, unsigned char r);
-	Pixel();
+	Pixel(int b, int g, int r) : b(b), g(g), r(r){};
+	Pixel() : b(0), g(0), r(0){};
+
+	int b, g, r;
 };
 
 #endif
