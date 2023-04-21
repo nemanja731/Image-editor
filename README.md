@@ -13,7 +13,7 @@ layer whose pixel matrix contains the pixels of the loaded image. The newly crea
 with a value of 100. When saving an image, the pixels in the upper layers are drawn over the pixels in the lower
 layers.
 
-![Image editor](https://i.gifer.com/K5tw.gif)
+![ImageEditor](https://i.gifer.com/K5tw.gif)
 
 ## Functionality
 
