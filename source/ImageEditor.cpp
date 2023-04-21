@@ -123,6 +123,43 @@ void ImageEditor::makeFirstLayer()
 	layersNumber++;
 }
 
+void ImageEditor::updateFirstLayer()
+{
+	for (int i = height - 1; i >= 0; i--)
+		for (int j = 0; j < width; j++)
+			list->layer[i][j] = &allPixels[i][j];
+}
+
+void ImageEditor::update()
+{
+	Layer *last = list;
+	for (int i = 1; i < layersNumber; i++)
+		last = last->next;
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			Layer *current = last;
+			double remaining = 1.0;
+			int blue = 0, green = 0, red = 0;
+			while (current)
+			{
+				if (current->layer[i][j])
+				{
+					red += (remaining * current->opacity * current->layer[i][j]->r) * 0.01;
+					green += (remaining * current->opacity * current->layer[i][j]->g) * 0.01;
+					blue += (remaining * current->opacity * current->layer[i][j]->b) * 0.01;
+					remaining *= (100 - current->opacity) * 0.01;
+				}
+				current = current->prev;
+			}
+			allPixels[i][j].r = red;
+			allPixels[i][j].g = green;
+			allPixels[i][j].b = blue;
+		}
+	}
+}
+
 bool ImageEditor::loadImage(unsigned char *image)
 {
 	if (allPixels != NULL)
@@ -514,42 +551,5 @@ void ImageEditor::eraseRect(int x, int y, int w, int h)
 					currentLayer->layer[i][j] = NULL;
 				}
 			}
-	}
-}
-
-void ImageEditor::updateFirstLayer()
-{
-	for (int i = height - 1; i >= 0; i--)
-		for (int j = 0; j < width; j++)
-			list->layer[i][j] = &allPixels[i][j];
-}
-
-void ImageEditor::update()
-{
-	Layer *last = list;
-	for (int i = 1; i < layersNumber; i++)
-		last = last->next;
-	for (int i = 0; i < height; i++)
-	{
-		for (int j = 0; j < width; j++)
-		{
-			Layer *current = last;
-			double remaining = 1.0;
-			int blue = 0, green = 0, red = 0;
-			while (current)
-			{
-				if (current->layer[i][j])
-				{
-					red += (remaining * current->opacity * current->layer[i][j]->r) * 0.01;
-					green += (remaining * current->opacity * current->layer[i][j]->g) * 0.01;
-					blue += (remaining * current->opacity * current->layer[i][j]->b) * 0.01;
-					remaining *= (100 - current->opacity) * 0.01;
-				}
-				current = current->prev;
-			}
-			allPixels[i][j].r = red;
-			allPixels[i][j].g = green;
-			allPixels[i][j].b = blue;
-		}
 	}
 }
