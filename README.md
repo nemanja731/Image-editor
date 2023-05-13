@@ -17,7 +17,7 @@ layers.
 
 ## Functionality
 
-Moguce manipulacije nad slikom su:
+Possible manipulations of the image are:
 - `addLayer()` -> adds a new image layer above of the active layer and that layer becomes the active layer
 - `deleteLayer()` -> deletes the active image layer
 - `selectLayer(int i)` -> the i-th layer above the layer with the loaded image becomes the active layer
